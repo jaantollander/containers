@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 
-RUN export DEBIAN_FRONTEND=noninteractive && \
-    apt-get update --yes > /dev/null && \
+RUN apt-get update --yes > /dev/null && \
+    DEBIAN_FRONTEND=noninteractive \
     apt-get install --yes r-base default-jre python3 python3-pip wget unzip > /dev/null && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*

@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 
-RUN export DEBIAN_FRONTEND=noninteractive && \
-    apt-get update > /dev/null && \
+RUN apt-get update > /dev/null && \
+    DEBIAN_FRONTEND=noninteractive \
     apt-get install --yes \
         r-base default-jre default-jdk git flex bison python-is-python3 pip wget gcc g++ make > /dev/null && \
     apt-get clean && \
