@@ -7,7 +7,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# TODO: some problem in cd while building
 RUN git clone --branch "v2.4.1" \
         https://github.com/sysbio-curie/MaBoSS-env-2.0.git \
         /usr/local/src/maboss && \
