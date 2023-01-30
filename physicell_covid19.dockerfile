@@ -34,6 +34,3 @@ RUN git clone https://github.com/vincent-noel/COVID19.git \
 
 RUN Rscript --vanilla -e "install.packages('pacman', repos='http://cran.us.r-project.org')" && \
     Rscript --vanilla -e 'pacman::p_load(c("dplyr","tidyverse","diptest","mclust","moments","pheatmap","optparse"), character.only = TRUE)'
-
-#RUN echo "install.packages('pacman', repos='http://cran.us.r-project.org')" | Rscript --vanilla  - && \
-#    echo 'pacman::p_load(c("dplyr","tidyverse","diptest","mclust","moments","pheatmap","optparse"), character.only = TRUE)' | Rscript --vanilla -
