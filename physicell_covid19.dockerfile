@@ -32,10 +32,8 @@ RUN git clone https://github.com/vincent-noel/COVID19.git \
     (cd /usr/local/src/covid19/PhysiCell && sed -i 's/COVID19/myproj/g' Makefile && make ;) && \
     ln -s /usr/local/src/covid19/PhysiCell/myproj /usr/local/bin/myproj
 
-RUN RPKGS1="install.packages('pacman', repos='http://cran.us.r-project.org')" && \
-    RPKGS2='pacman::p_load(c("dplyr","tidyverse","diptest","mclust","moments","pheatmap","optparse"), character.only = TRUE)' && \
-    Rscript --vanilla -e "$RPKGS1" && \
-    Rscript --vanilla -e "$RPKGS2"
+RUN Rscript --vanilla -e "install.packages('pacman', repos='http://cran.us.r-project.org')" && \
+    Rscript --vanilla -e 'pacman::p_load(c("dplyr","tidyverse","diptest","mclust","moments","pheatmap","optparse"), character.only = TRUE)'
 
 #RUN echo "install.packages('pacman', repos='http://cran.us.r-project.org')" | Rscript --vanilla  - && \
 #    echo 'pacman::p_load(c("dplyr","tidyverse","diptest","mclust","moments","pheatmap","optparse"), character.only = TRUE)' | Rscript --vanilla -
