@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 
-RUN export DEBIAN_FRONTEND=noninteractive && \
-    apt-get --quiet update && \
+RUN apt-get --quiet update && \
+    DEBIAN_FRONTEND=noninteractive \
     apt-get install --assume-yes --no-install-recommends \
         r-base \
         libhdf5-dev \

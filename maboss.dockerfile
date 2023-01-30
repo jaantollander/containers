@@ -1,8 +1,8 @@
 FROM ubuntu:20.04
 
 # TODO: can we use symlink instead of `python-is-python3`?
-RUN export DEBIAN_FRONTEND=noninteractive && \
-    apt-get --quiet update && \
+RUN apt-get --quiet update && \
+    DEBIAN_FRONTEND=noninteractive \
     apt-get install --assume-yes --no-install-recommends \
         r-base \
         default-jre \
