@@ -1,10 +1,21 @@
 FROM ubuntu:20.04
 
-RUN apt-get update > /dev/null && \
-    DEBIAN_FRONTEND=noninteractive \
-    apt-get install --yes \
-        r-base default-jre default-jdk git flex bison python-is-python3 pip wget gcc g++ make > /dev/null && \
-    apt-get clean && \
+# TODO: can we use symlink instead of `python-is-python3`?
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    apt-get --quiet update && \
+    apt-get install --assume-yes --no-install-recommends \
+        r-base \
+        default-jre \
+        default-jdk \
+        git \
+        flex \
+        bison \
+        python3-pip \
+        python-is-python3 \
+        wget \
+        gcc \
+        g++ \
+        make && \
     rm -rf /var/lib/apt/lists/*
 
 RUN git clone --branch "v2.4.1" \

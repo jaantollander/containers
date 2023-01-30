@@ -1,9 +1,14 @@
 FROM ubuntu:20.04
 
-RUN apt-get update --yes > /dev/null && \
-    DEBIAN_FRONTEND=noninteractive \
-    apt-get install --yes r-base default-jre python3 python3-pip wget unzip > /dev/null && \
-    apt-get clean && \
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    apt-get --quiet update && \
+    apt-get install --assume-yes --no-install-recommends \
+        r-base \
+        default-jre \
+        python3 \
+        python3-pip \
+        wget \
+        unzip && \
     rm -rf /var/lib/apt/lists/*
 
 # TODO: specify versions to install
