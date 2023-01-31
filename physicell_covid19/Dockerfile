@@ -26,6 +26,7 @@ RUN git clone --branch "v2.4.1" \
 # TODO: do we want to link the directory or files in it?
 # TODO: remove the need for seq
 # TODO: better name than myproj
+# TODO: point to specific commit hash
 RUN git clone https://github.com/vincent-noel/COVID19.git \
         /usr/local/src/covid19 && \
     rm -rf /usr/local/src/covid19/.git && \

@@ -16,6 +16,6 @@ Todo
 - Containers should load specific dependencies from the @permedcoe GitHub team.
 - We should install R packages with a script file rather than with inline commands.
 - We will move the contents of this repository to @permedcode team when they are finished.
-- We should avoid having to build dependencies more than once (e.g. MaBoSS).
+- We should avoid having to build dependencies more than once (e.g. MaBoSS, R dependencies).
     * Can we use precompiled binaries?
 
