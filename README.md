@@ -18,5 +18,5 @@ Todo
 - We will move the contents of this repository to @permedcode team when they are finished.
 - We should avoid having to build dependencies more than once (e.g. MaBoSS, R dependencies).
     * Can we use precompiled binaries?
-- Can we make one container available from another container to avoid having to place the build the same software in multiple containers.
+- Can we make one container available from another container to avoid having to place the build the same software in multiple containers and to decouple dependencies.
 
