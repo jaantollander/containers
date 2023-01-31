@@ -2,7 +2,7 @@
 
 build() {
     NAME=$1
-    TAG=${2:-"latest"}
+    TAG=$2
     sudo docker build --tag "$NAME:$TAG" "$NAME" \
         1> >(tee "$NAME/stdout.log") \
         2> >(tee "$NAME/stderr.log" >&2)
@@ -17,4 +17,9 @@ push() {
 }
 
 # Pass the arguments
-"$@"
+case $1 in
+    (build) build "$2" "${3:-"latest"}" ;;
+    (push) push "$2" "$3" "$4" ;;
+    (*) exit 1 ;;
+esac
+
