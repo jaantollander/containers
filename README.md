@@ -1,3 +1,4 @@
+Todo
 - reduce image size
 - reduce redundancies in dependencies
 - manage external dependencies
