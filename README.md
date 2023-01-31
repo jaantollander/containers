@@ -1,7 +1,10 @@
-We build OCI compliant containers using Docker.
-The containers also need to be compatible with Apptainer.
-We will push the containers to GitHub container registry.
-The structure of the container files consists of a directory with the container name, the container file (Dockerfile) and the additional files need to build the container.
+Idea
+
+* We build OCI compliant containers using Docker and Dockerfile format such that they are compatible with Apptainer.
+* We will push the container images to GitHub container registry.
+* We will pull the container images from the GitHub container registry using Apptainer.
+* We will run the container images using Apptainer.
+* The structure of the container files consists of a directory with the container name, the container file (Dockerfile) and the additional files need to build the container.
 
 ```text
 <name>
