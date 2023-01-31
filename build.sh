@@ -10,7 +10,8 @@ build() {
 
 push() {
     NAME=$1
-    TAG=${2:-"latest"}
+    TAG=$2
+    OWNER=$3
     sudo docker tag "$NAME:$TAG" "ghcr.io/$OWNER/$NAME:$TAG"
     sudo docker push "ghcr.io/$OWNER/$NAME:$TAG"
 }
