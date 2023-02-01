@@ -7,6 +7,9 @@ RUN apt-get --quiet update && \
         flex \
         bison \
         git \
+        gcc \
+        g++ \
+        make \
         r-base \
         libxml2-dev \
         libssl-dev \
@@ -33,5 +36,5 @@ RUN git clone https://github.com/vincent-noel/COVID19.git \
     (cd /usr/local/src/covid19/PhysiCell && sed -i 's/COVID19/myproj/g' Makefile && make ;) && \
     ln -s /usr/local/src/covid19/PhysiCell/myproj /usr/local/bin/myproj
 
-RUN Rscript --vanilla -e "install.packages('pacman', repos='http://cran.us.r-project.org')" && \
-    Rscript --vanilla -e 'pacman::p_load(c("dplyr","tidyverse","diptest","mclust","moments","pheatmap","optparse"), character.only = TRUE)'
+COPY install.R /opt/install.R
+RUN Rscript --vanilla /opt/install.R
