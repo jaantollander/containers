@@ -1,6 +1,5 @@
 FROM ubuntu:20.04
 
-# TODO: can we use symlink instead of `python-is-python3`?
 RUN apt-get --quiet update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get install --assume-yes --no-install-recommends \
@@ -10,13 +9,14 @@ RUN apt-get --quiet update && \
         git \
         flex \
         bison \
+        python3 \
         python3-pip \
-        python-is-python3 \
         wget \
         gcc \
         g++ \
         make && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    ln -s /usr/bin/python3 /usr/bin/python
 
 RUN git clone --branch "v2.4.1" \
         https://github.com/sysbio-curie/MaBoSS-env-2.0.git \
