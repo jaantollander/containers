@@ -1,6 +1,6 @@
 Idea
 
-* We build OCI compliant containers using Docker and Dockerfile format such that they are compatible with Apptainer.
+* We build containers that are OCI compliant and compatible with Apptainer.
 * We will push the container images to GitHub container registry.
 * We will pull the container images from the GitHub container registry using Apptainer.
 * We will run the container images using Apptainer.
@@ -22,4 +22,6 @@ Todo
 - We should avoid having to build dependencies more than once (e.g. MaBoSS, R dependencies).
     * Can we use precompiled binaries?
 - Can we make one container available from another container to avoid having to place the build the same software in multiple containers and to decouple dependencies.
+- Change base image to latest ubuntu version if possible.
+- Try Buildah or Podman for building OCI compliant containers instead of Docker.
 
