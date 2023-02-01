@@ -16,14 +16,14 @@ RUN apt-get --quiet update && \
         g++ \
         make && \
     rm -rf /var/lib/apt/lists/* && \
-    ln -s /usr/bin/python3 /usr/bin/python
+    ln -sf /usr/bin/python3 /usr/bin/python
 
 RUN git clone --branch "v2.4.1" \
         https://github.com/sysbio-curie/MaBoSS-env-2.0.git \
         /usr/local/src/maboss && \
     rm -rf /usr/local/src/maboss/.git && \
     (cd /usr/local/src/maboss/engine/src && make && make install ;) && \
-    ln -s /usr/local/src/maboss/engine/pub/* /usr/local/bin
+    ln -sf /usr/local/src/maboss/engine/pub/* /usr/local/bin
 
 RUN mkdir -p /usr/local/jar && \
     wget --no-hsts --quiet \

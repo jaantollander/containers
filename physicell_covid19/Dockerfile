@@ -23,7 +23,7 @@ RUN git clone --branch "v2.4.1" \
         /usr/local/src/maboss && \
     rm -rf /usr/local/src/maboss/.git && \
     (cd /usr/local/src/maboss/engine/src && make && make install ;) && \
-    ln -s /usr/local/src/maboss/engine/pub/* /usr/local/bin
+    ln -sf /usr/local/src/maboss/engine/pub/* /usr/local/bin
 
 # TODO: fix the version of the repo
 # TODO: do we want to link the directory or files in it?
@@ -34,7 +34,7 @@ RUN git clone https://github.com/vincent-noel/COVID19.git \
         /usr/local/src/covid19 && \
     rm -rf /usr/local/src/covid19/.git && \
     (cd /usr/local/src/covid19/PhysiCell && sed -i 's/COVID19/myproj/g' Makefile && make ;) && \
-    ln -s /usr/local/src/covid19/PhysiCell/myproj /usr/local/bin/myproj
+    ln -sf /usr/local/src/covid19/PhysiCell/myproj /usr/local/bin/myproj
 
 COPY install.R /opt/install.R
 RUN Rscript --vanilla /opt/install.R
