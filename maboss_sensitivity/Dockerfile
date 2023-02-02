@@ -12,7 +12,7 @@ RUN apt-get --quiet update && \
     rm -rf /var/lib/apt/lists/*
 
 # TODO: specify versions to install
-RUN pip install maboss seaborn && \
+RUN pip3 install maboss seaborn && \
     wget --no-hsts --quiet https://github.com/sysbio-curie/MaBoSS-env-2.0/releases/download/v2.4.1/MaBoSS-linux64.zip && \
     unzip -o MaBoSS-linux64.zip -d /usr/local/bin/ && \
     rm MaBoSS-linux64.zip

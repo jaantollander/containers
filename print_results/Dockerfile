@@ -7,9 +7,10 @@ RUN apt-get --quiet update && \
         default-jre \
         python3 \
         python3-pip && \
+    rm -rf /var/lib/apt/lists/* && \
     ln -sf /usr/bin/python3 /usr/bin/python
 
-RUN pip install --no-cache-dir \
+RUN pip3 install --no-cache-dir \
         seaborn \
         numpy \
         matplotlib \
