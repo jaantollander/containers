@@ -10,5 +10,5 @@ RUN apt-get --quiet update && \
         libcurl4-openssl-dev && \
     rm -rf /var/lib/apt/lists/*
 
-COPY install.R /opt/install.R
+COPY ./install.R /opt/install.R
 RUN Rscript --vanilla /opt/install.R

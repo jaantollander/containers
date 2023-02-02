@@ -36,5 +36,5 @@ RUN git clone https://github.com/vincent-noel/COVID19.git \
     (cd /usr/local/src/covid19/PhysiCell && sed -i 's/COVID19/myproj/g' Makefile && make ;) && \
     ln -sf /usr/local/src/covid19/PhysiCell/myproj /usr/local/bin/myproj
 
-COPY install.R /opt/install.R
+COPY ./install.R /opt/install.R
 RUN Rscript --vanilla /opt/install.R
