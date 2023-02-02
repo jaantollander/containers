@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import os
 import jax
 import jax.numpy as jnp
