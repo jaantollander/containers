@@ -24,7 +24,7 @@ RUN tar -xvf /opt/carnival.tar.gz -C /opt/. && \
     tar -xvf /opt/cellnopt.tar.gz -C /opt/. && \
     rm /opt/cellnopt.tar.gz && \
     (cd /opt/cellnopt && make example1; ) && \
-    (cd /opt/carnival && make aco_toymodel && make aco_carnival; ) && 
+    (cd /opt/carnival && make aco_toymodel && make aco_carnival; ) && \
     ln -sf /opt/cellnopt/build/example1 /usr/local/bin && \
     ln -sf /opt/carnival/build/aco /usr/local/bin
 
