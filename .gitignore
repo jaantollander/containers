@@ -1,2 +1,3 @@
-.original
+.original/
+.logs/
 *.log
