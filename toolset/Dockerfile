@@ -14,12 +14,6 @@ RUN chmod +x /usr/local/bin/*
 ENV export LC_ALL=C
 ENV export R_LIBS="/usr/local/lib/R/site-library:/usr/lib/R/site-library:/usr/lib/R/library"
 
-# How to install latest r-base.
-# https://cran.r-project.org/bin/linux/ubuntu/fullREADME.html
-
-# TODO: Verify that the key fingerprint is:
-# E298A3A825C0D65DFD57CBB651716619E084DAB9
-
 RUN apt-get --quiet update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get install --assume-yes --no-install-recommends \
@@ -31,13 +25,19 @@ RUN apt-get --quiet update && \
         libcurl4-openssl-dev \
         libxml2-dev \
         libssl-dev \
-        libpng-dev && \
-    wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | \
+        libpng-dev
+
+# Install latest r-base.
+# https://cran.r-project.org/bin/linux/ubuntu/fullREADME.html
+# TODO: Verify that the key fingerprint is:
+# E298A3A825C0D65DFD57CBB651716619E084DAB9
+RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | \
         tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc && \
-    add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/" && \
+    echo "deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/" | \
+        tee -a /etc/apt/sources.list.d/focal_cran40.list && \
     apt-get --quiet update && \
     DEBIAN_FRONTEND=noninteractive \
-    apt-get install --assume-yet --no-install-recommends \
+    apt-get install --assume-yes --no-install-recommends \
         r-base \
         r-base-dev && \
     rm -rf /var/lib/apt/lists/*
