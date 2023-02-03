@@ -1,5 +1,14 @@
 FROM ubuntu:20.04
 
+# ASL 2.0 license
+# https://b2drop.bsc.es/index.php/s/SRWPNAkKL73oaRw/download
+COPY ./jar/BiNoM.jar /usr/local/jar/BiNoM.jar
+
+# TODO: license compatibility issues?
+# LGPL-3.0 license
+# https://github.com/auranic/VDAOEngine/raw/master/jar/VDAOEngine.jar
+COPY ./jar/VDAOEngine.jar /usr/local/jar/VDAOEngine.jar
+
 RUN apt-get --quiet update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get install --assume-yes --no-install-recommends \
@@ -24,11 +33,3 @@ RUN git clone --branch "v2.4.1" \
     rm -rf /usr/local/src/maboss/.git && \
     (cd /usr/local/src/maboss/engine/src && make && make install ;) && \
     ln -sf /usr/local/src/maboss/engine/pub/* /usr/local/bin
-
-RUN mkdir -p /usr/local/jar && \
-    wget --no-hsts --quiet \
-        https://b2drop.bsc.es/index.php/s/SRWPNAkKL73oaRw/download \
-        -O /usr/local/jar/BiNoM.jar && \
-    wget --no-hsts --quiet \
-        https://github.com/auranic/VDAOEngine/raw/master/jar/VDAOEngine.jar \
-        -O /usr/local/jar/VDAOEngine.jar
