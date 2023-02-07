@@ -52,6 +52,8 @@ case $1 in
     (build) build "$2" "${3:-"latest"}" ;;
     (push) push "$2" "$3" "$4" ;;
     (pull) pull "$2" "$3" "$4" ;;
+    (build_oci) build_oci "$2" "${3:-"latest"}" ;;
+    (push_oci) push_oci "$2" "$3" "$4" ;;
     (*) exit 1 ;;
 esac
 
