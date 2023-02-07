@@ -10,11 +10,7 @@ RUN apt-get --quiet update && \
     rm -rf /var/lib/apt/lists/* && \
     ln -sf /usr/bin/python3 /usr/bin/python
 
-RUN pip3 install --no-cache-dir \
-        seaborn \
-        numpy \
-        matplotlib \
-        pyyaml \
-        permedcoe
+COPY ./requirements.txt /opt/requirements.txt
+RUN pip3 install --no-cache-dir -r /opt/requirements.txt
 
 # TODO: install print_drug_results building block
