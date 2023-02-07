@@ -24,6 +24,7 @@ Todo
     - R installs
     - git clones and wgets
 - For each containers, add
+    - version (for tag)
     - readme
     - license
     - tests
