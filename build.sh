@@ -28,6 +28,19 @@ pull() {
     apptainer pull "$IMAGES_DIR/$NAME.sif" "docker://ghcr.io/$OWNER/$NAME:$TAG"
 }
 
+build_oci() {
+    NAME=$1
+    buildah build "$NAME"
+}
+
+push_oci() {
+    NAME=$1
+    TAG=$2
+    OWNER=$3
+    buildah tag "$NAME:$TAG" "ghcr.io/$OWNER/$NAME:$TAG"
+    buildah push "ghcr.io/$OWNER/$NAME:$TAG"
+}
+
 # Pass the arguments
 case $1 in
     (build) build "$2" "${3:-"latest"}" ;;

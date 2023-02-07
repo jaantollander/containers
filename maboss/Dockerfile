@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 # ASL 2.0 license
 # https://b2drop.bsc.es/index.php/s/SRWPNAkKL73oaRw/download
