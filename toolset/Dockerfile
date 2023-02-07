@@ -6,30 +6,14 @@ ENV export R_LIBS="/usr/local/lib/R/site-library:/usr/lib/R/site-library:/usr/li
 RUN apt-get --quiet update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get install --assume-yes --no-install-recommends \
-        ca-certificates \
-        wget \
-        gnupg \
-        build-essential \
-        git \
-        libcurl4-openssl-dev \
-        libxml2-dev \
-        libssl-dev \
-        libpng-dev && \
-    rm -rf /var/lib/apt/lists/*
-
-# Install latest r-base.
-# https://cran.r-project.org/bin/linux/ubuntu/fullREADME.html
-# TODO: Verify that the key fingerprint is:
-# E298A3A825C0D65DFD57CBB651716619E084DAB9
-RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | \
-        tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc && \
-    echo "deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/" | \
-        tee -a /etc/apt/sources.list.d/focal_cran40.list && \
-    apt-get --quiet update && \
-    DEBIAN_FRONTEND=noninteractive \
-    apt-get install --assume-yes --no-install-recommends \
-        r-base \
-        r-base-dev && \
+        "r-base=4.1.*" \
+        "r-base-dev=4.1.*" \
+        "libhdf5-dev=1.10.*" \
+        "libxml2-dev=2.9.*" \
+        "libgit2-dev=1.1.*" \
+        "libssl-dev=3.0.*" \
+        "libcurl4-openssl-dev=7.81.*" \
+        "libpng-dev=1.6.*" && \
     rm -rf /var/lib/apt/lists/*
 
 COPY ./install.R /opt/install.R
