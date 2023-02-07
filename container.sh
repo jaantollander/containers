@@ -30,7 +30,13 @@ pull() {
 
 build_oci() {
     NAME=$1
-    buildah build "$NAME"
+    TAG=$2
+    DATE=$(date -u +"%Y-%m-%d_%H:%M:%S")
+    LOG_DIR="$NAME/.logs/$DATE"
+    mkdir -p "$LOG_DIR"
+    buildah build --tag "$NAME:$TAG" "$NAME" \
+        1> >(tee "$LOG_DIR/stdout.log") \
+        2> >(tee "$LOG_DIR/stderr.log" >&2)
 }
 
 push_oci() {
