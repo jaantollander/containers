@@ -12,24 +12,32 @@ COPY ./jar/VDAOEngine.jar /usr/local/jar/VDAOEngine.jar
 RUN apt-get --quiet update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get install --assume-yes --no-install-recommends \
-        r-base \
-        default-jre \
-        default-jdk \
-        git \
-        flex \
-        bison \
-        python3 \
-        python3-pip \
-        wget \
-        gcc \
-        g++ \
-        make && \
+        "r-base=4.1.2*" \
+        "default-jre=2:1.11*" \
+        "default-jdk=2:1.11*" \
+        "flex=2.6.4*" \
+        "bison=2:3.8.2*" \
+        "perl=5.34.0*" \
+        "python3=3.10.6*" \
+        "python3-pip=22.0.2*" \
+        "wget=1.21.2*" \
+        "unzip=6.0*" \
+        "gcc=4:11.2.0*" \
+        "g++=4:11.2.0*" \
+        "make=4.3*" && \
     rm -rf /var/lib/apt/lists/* && \
     ln -sf /usr/bin/python3 /usr/bin/python
 
-RUN git clone --branch "v2.4.1" \
-        https://github.com/sysbio-curie/MaBoSS-env-2.0.git \
-        /usr/local/src/maboss && \
-    rm -rf /usr/local/src/maboss/.git && \
-    (cd /usr/local/src/maboss/engine/src && make && make install ;) && \
-    ln -sf /usr/local/src/maboss/engine/pub/* /usr/local/bin
+# TODO: can we remove unnecessary files after the build?
+RUN wget --no-hsts "https://github.com/sysbio-curie/MaBoSS-env-2.0/archive/refs/tags/v2.4.1.zip" && \
+    unzip -o "v2.4.1.zip" /usr/local/src/ && \
+    rm "v2.4.1.zip" && \
+    (cd /usr/local/src/MaBoSS-env-2.0-2.4.1/engine/src && make && make install ;) && \
+    ln -sf /usr/local/src/MaBoSS-env-2.0-2.4.1/engine/pub/* /usr/local/bin
+
+#RUN wget --no-hsts --quiet https://github.com/sysbio-curie/MaBoSS-env-2.0/releases/download/v2.4.1/MaBoSS-linux64.zip && \
+#    unzip -o MaBoSS-linux64.zip -d /usr/local/bin/ && \
+#    rm MaBoSS-linux64.zip
+
+COPY ./requirements.txt /opt/requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
