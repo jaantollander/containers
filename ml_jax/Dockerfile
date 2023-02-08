@@ -9,5 +9,3 @@ RUN mamba env create --name "$NAME" --file /opt/env.yml
 COPY ./scripts/ml.py /opt/ml.py
 RUN chmod +x /opt/ml.py && \
     ln -sf /opt/ml.py /usr/local/bin/ml
-
-HEALTHCHECK CMD ml
