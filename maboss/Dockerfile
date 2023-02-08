@@ -40,4 +40,4 @@ RUN wget --no-hsts "https://github.com/sysbio-curie/MaBoSS-env-2.0/archive/refs/
 #    rm MaBoSS-linux64.zip
 
 COPY ./requirements.txt /opt/requirements.txt
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir -r /opt/requirements.txt
