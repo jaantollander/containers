@@ -1,6 +1,6 @@
 FROM condaforge/mambaforge:4.10.3-10
 
-ENV PATH=/opt/conda/envs/pypath/bin/:$PATH
+ENV PATH=/opt/conda/envs/pypath/bin:$PATH
 
 COPY ./env.yml /opt/FromSpeciesToMaBoSSModel/env.yml
 COPY ./scripts/download_database.py /opt/FromSpeciesToMaBoSSModel/download_database.py
