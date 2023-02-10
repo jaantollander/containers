@@ -4,6 +4,7 @@ RUN apt-get --quiet update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get install --assume-yes --no-install-recommends \
         r-base \
+        r-base-dev \
         libhdf5-dev \
         libxml2-dev \
         libssl-dev \
@@ -16,8 +17,7 @@ RUN apt-get --quiet update && \
         libfreetype6-dev \
         libpng-dev \
         libtiff5-dev \
-        libjpeg-dev \
-        build-essential && \
+        libjpeg-dev && \
     rm -rf /var/lib/apt/lists/*
 
 COPY ./install.R /opt/install.R
