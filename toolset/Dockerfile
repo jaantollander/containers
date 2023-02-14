@@ -1,20 +1,4 @@
-FROM ubuntu:22.04
-
-ENV export LC_ALL=C
-ENV export R_LIBS="/usr/local/lib/R/site-library:/usr/lib/R/site-library:/usr/lib/R/library"
-
-RUN apt-get --quiet update && \
-    DEBIAN_FRONTEND=noninteractive \
-    apt-get install --assume-yes --no-install-recommends \
-        "r-base=4.1.*" \
-        "r-base-dev=4.1.*" \
-        "libhdf5-dev=1.10.*" \
-        "libxml2-dev=2.9.*" \
-        "libgit2-dev=1.1.*" \
-        "libssl-dev=3.0.*" \
-        "libcurl4-openssl-dev=7.81.*" \
-        "libpng-dev=1.6.*" && \
-    rm -rf /var/lib/apt/lists/*
+FROM library/base:latest
 
 COPY ./install.R /opt/install.R
 RUN Rscript --vanilla /opt/install.R
