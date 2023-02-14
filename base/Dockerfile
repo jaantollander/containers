@@ -21,6 +21,8 @@ RUN apt-get --quiet update && \
         "libpng-dev=1.6.*" && \
     rm -rf /var/lib/apt/lists/*
 
+# TODO: Should we install the latest R?
+# https://cloud.r-project.org/bin/linux/ubuntu/
 
 # Install miniforge and mamba
 # https://github.com/conda-forge/miniforge-images
