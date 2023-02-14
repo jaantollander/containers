@@ -1,15 +1,10 @@
 #!/usr/bin/env bash
-IMAGES_DIR="images"
+IMAGES_DIR=${IMAGES_DIR:-"./images"}
 
 build() {
     NAME=$1
     TAG=$2
-    DATE=$(date -u +"%Y-%m-%d_%H:%M:%S")
-    LOG_DIR="$NAME/.logs/$DATE"
-    mkdir -p "$LOG_DIR"
-    sudo docker build --tag "$NAME:$TAG" "$NAME" \
-        1> >(tee "$LOG_DIR/stdout.log") \
-        2> >(tee "$LOG_DIR/stderr.log" >&2)
+    sudo docker build --tag "$NAME:$TAG" "$NAME"
 }
 
 push() {
@@ -20,23 +15,10 @@ push() {
     sudo docker push "ghcr.io/$OWNER/$NAME:$TAG"
 }
 
-pull() {
-    NAME=$1
-    TAG=$2
-    OWNER=$3
-    mkdir -p "$IMAGES_DIR"
-    apptainer pull "$IMAGES_DIR/$NAME.sif" "docker://ghcr.io/$OWNER/$NAME:$TAG"
-}
-
 build_oci() {
     NAME=$1
     TAG=$2
-    DATE=$(date -u +"%Y-%m-%d_%H:%M:%S")
-    LOG_DIR="$NAME/.logs/$DATE"
-    mkdir -p "$LOG_DIR"
-    buildah build --tag "$NAME:$TAG" "$NAME" \
-        1> >(tee "$LOG_DIR/stdout.log") \
-        2> >(tee "$LOG_DIR/stderr.log" >&2)
+    buildah build --tag "$NAME:$TAG" "$NAME"
 }
 
 push_oci() {
@@ -45,6 +27,14 @@ push_oci() {
     OWNER=$3
     buildah tag "$NAME:$TAG" "ghcr.io/$OWNER/$NAME:$TAG"
     buildah push "ghcr.io/$OWNER/$NAME:$TAG"
+}
+
+pull() {
+    NAME=$1
+    TAG=$2
+    OWNER=$3
+    mkdir -p "$IMAGES_DIR"
+    apptainer pull "$IMAGES_DIR/$NAME.sif" "docker://ghcr.io/$OWNER/$NAME:$TAG"
 }
 
 # Pass the arguments
