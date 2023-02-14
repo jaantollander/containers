@@ -1,10 +1,10 @@
 FROM condaforge/mambaforge:22.9.0-3
 
-ARG NAME=jax
-ENV PATH="/opt/conda/envs/$NAME/bin:$PATH"
+ARG ENV_NAME=ml_jax
+ENV PATH="/opt/conda/envs/$ENV_NAME/bin:$PATH"
 
-COPY ./env.yml /opt/env.yml
-RUN mamba env create --name "$NAME" --file /opt/env.yml
+COPY ./env.lock /opt/env.yml
+RUN mamba env create --quiet --name "$ENV_NAME" --file /opt/env.yml
 
 COPY ./scripts/ml.py /opt/ml.py
 RUN chmod +x /opt/ml.py && \
