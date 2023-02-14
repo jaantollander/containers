@@ -9,7 +9,9 @@ The structure of the container files consists of a directory with the container 
 
 Idea
 
-* We build containers that are OCI compliant and compatible with Apptainer.
+* We define containers using the Dockerfile format.
+* We build OCI compliant containers using Buildah.
+* Containers should be compatible with Apptainer.
 * We push the container images to GitHub container registry.
 * We pull the container images from the GitHub container registry using Apptainer.
 * We run the container images using Apptainer on Mahti cluster.
@@ -46,3 +48,7 @@ Done
 - Try Buildah (or Podman) for building OCI compliant containers instead of Docker.
     - Seems to work!
 - Change base image to latest ubuntu version if possible.
+
+Resources
+
+- https://jcristharif.com/conda-docker-tips.html
