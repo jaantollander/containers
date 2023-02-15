@@ -27,5 +27,5 @@ RUN wget --no-hsts --quiet "https://github.com/sysbio-curie/MaBoSS-env-2.0/relea
     unzip -o MaBoSS-linux64.zip -d /usr/local/bin/ && \
     rm MaBoSS-linux64.zip
 
-COPY ./requirements.txt /opt/requirements.txt
+COPY ./requirements-freeze.txt /opt/requirements.txt
 RUN pip3 install --no-cache-dir -r /opt/requirements.txt
