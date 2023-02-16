@@ -19,12 +19,14 @@ Idea
 
 Todo
 
+- Should we merge `meta_analysis` into `toolset`? Both contains bunch of R dependencies.
+- We should move all assets to under BuildingBlocks assets instead of the container directory
 - Lock versions for dependencies
     - apt-get
-    - pip
-    - conda
+    - pip (`pip freeze > requirements-freeze.pip`)
+    - conda (`mamba env export --name <env> > env.lock`)
     - R installs
-    - git clones and wgets
+    - wget
 - For each containers, add
     - version (for tag)
     - readme
@@ -51,4 +53,7 @@ Done
 
 Resources
 
+- https://devhints.io/bash
 - https://jcristharif.com/conda-docker-tips.html
+- https://cloud.r-project.org/bin/linux/ubuntu/
+- https://github.com/conda-forge/miniforge-images
