@@ -1,7 +1,7 @@
-FROM ubuntu:22.04
+FROM library/r-base:latest
 
-ENV export LC_ALL=C
-ENV export R_LIBS="/usr/local/lib/R/site-library:/usr/lib/R/site-library:/usr/lib/R/library"
+# Install miniforge and mamba
+# https://github.com/conda-forge/miniforge-images
 
 RUN apt-get --quiet update && \
     DEBIAN_FRONTEND=noninteractive \
@@ -9,23 +9,9 @@ RUN apt-get --quiet update && \
         "ca-certificates" \
         "bzip2" \
         "git" \
-        "wget=1.21.2*" \
-        "unzip=6.0*" \
-        "r-base=4.1.2*" \
-        "r-base-dev=4.1.2*" \
-        "libhdf5-dev=1.10.*" \
-        "libxml2-dev=2.9.*" \
-        "libgit2-dev=1.1.*" \
-        "libssl-dev=3.0.*" \
-        "libcurl4-openssl-dev=7.81.*" \
-        "libpng-dev=1.6.*" && \
+        "wget" && \
     rm -rf /var/lib/apt/lists/*
 
-# TODO: Should we install the latest R?
-# https://cloud.r-project.org/bin/linux/ubuntu/
-
-# Install miniforge and mamba
-# https://github.com/conda-forge/miniforge-images
 ARG MINIFORGE_NAME=Mambaforge
 ARG MINIFORGE_VERSION=22.11.1-4
 
