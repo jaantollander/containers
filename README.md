@@ -6,13 +6,23 @@ The structure of the container files consists of a directory with the container 
 └── <files>
 ```
 
-Usage
+Building images
 
+```sh
+buildah build --tag "maboss:latest" "maboss/"
 ```
-buildah build --tag "maboss" "maboss:latest"
+
+Pushing images to GitHub container registry
+
+```sh
 buildah login ghcr.io -u "permedcoe"  # supply an access token
 buildah tag "localhost/maboss:latest" "ghcr.io/permedcoe/maboss:latest"
 buildah push --tag "maboss" "maboss:latest"
+```
+
+Pulling images with Apptainer (or Singularity)
+
+```sh
 apptainer pull "maboss-latest.sif" "ghcr.io/permedcoe/maboss:latest"
 ```
 
