@@ -6,6 +6,14 @@ The structure of the container files consists of a directory with the container 
 └── <files>
 ```
 
+Ubuntu 22.04 works for building the images.
+We recommend a virtual machine due to the long build times of some of the container images.
+
+```sh
+sudo apt-get update
+sudo apt-get install --yes buildah
+```
+
 Building images
 
 ```sh
@@ -17,7 +25,7 @@ Pushing images to GitHub container registry
 ```sh
 buildah login ghcr.io -u "permedcoe"  # supply an access token
 buildah tag "localhost/maboss:latest" "ghcr.io/permedcoe/maboss:latest"
-buildah push --tag "maboss" "maboss:latest"
+buildah push "ghcr.io/permedcoe/maboss:latest"
 ```
 
 Pulling images with Apptainer (or Singularity)

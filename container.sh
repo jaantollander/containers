@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-IMAGES_DIR=${IMAGES_DIR:-"./images"}
-
 build() {
     TAG=$1
     DIR=$2
