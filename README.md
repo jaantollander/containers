@@ -6,6 +6,16 @@ The structure of the container files consists of a directory with the container 
 └── <files>
 ```
 
+Usage
+
+```
+buildah build --tag "maboss" "maboss:latest"
+buildah login ghcr.io -u "permedcoe"  # supply an access token
+buildah tag "localhost/maboss:latest" "ghcr.io/permedcoe/maboss:latest"
+buildah push --tag "maboss" "maboss:latest"
+apptainer pull "maboss-latest.sif" "ghcr.io/permedcoe/maboss:latest"
+```
+
 
 Idea
 
@@ -16,14 +26,13 @@ Idea
 * We pull the container images from the GitHub container registry using Apptainer.
 * We run the container images using Apptainer on Mahti cluster.
 
-
 Todo
 
 - Should we merge `meta_analysis` into `toolset`? Both contains bunch of R dependencies.
 - We should move all assets to under BuildingBlocks assets instead of the container directory
 - Lock versions for dependencies
     - apt-get
-    - pip (`pip freeze > requirements-freeze.pip`)
+    - pip (`pip freeze > requirements-freeze.txt`)
     - conda (`mamba env export --name <env> > env.lock`)
     - R installs
     - wget
