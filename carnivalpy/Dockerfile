@@ -1,4 +1,4 @@
-FROM library/base:latest
+FROM localhost/r-base_mambaforge:latest
 
 ARG CONDA_ENV=carnivalpy
 ENV PATH=/opt/conda/envs/${CONDA_ENV}/bin:${PATH}

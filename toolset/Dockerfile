@@ -1,4 +1,4 @@
-FROM library/base:latest
+FROM localhost/r-base:latest
 
 COPY ./install.R /opt/install.R
 RUN Rscript --vanilla /opt/install.R

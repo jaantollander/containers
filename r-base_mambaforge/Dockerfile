@@ -1,4 +1,4 @@
-FROM library/r-base:latest
+FROM localhost/r-base:latest
 
 # Install miniforge and mamba
 # https://github.com/conda-forge/miniforge-images

@@ -1,4 +1,4 @@
-FROM condaforge/mambaforge:4.10.3-10
+FROM localhost/mambaforge:latest
 
 ARG CONDA_ENV=pypath
 ENV PATH=/opt/conda/envs/$CONDA_ENV/bin:$PATH
